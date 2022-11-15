@@ -17,4 +17,22 @@ Configure docker
 15. docker container ls or docker container ls -a
 16. Remove container --> docker stop container-name or id --> docker rm container-name or id
 17. Remove image --> docker rmi image name or image id 
-18. Dockerfile --> Is a definition for docker image 
+18. Dockerfile --> Is a definition for docker image
+19. TOMCAT 404 NOT FOUND :  - docker exec -it tomcat-container-1 /bin/bash
+20.                         - Copy all files in webapps.dist > webapps
+21. docker stop 619110ddf2c5 {docker image ID} : to stop docker image
+22. In Root dir, vim Dockerfile:
+23. FROM centos
+    RUN cd /etc/yum.repos.d/
+    RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+    RUN sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
+    RUN yum -y install java
+    RUN mkdir /opt/tomcat/
+    WORKDIR /opt/tomcat
+    ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.69/bin/apache-tomcat-9.0.69.tar.gz /opt/tomcat
+    RUN tar xvzf apache-tomcat-9.0.69.tar.gz
+    RUN mv apache-tomcat-9.0.69/* /opt/tomcat
+    EXPOSE 8080
+    CMD ["/opt/tomcat/bin/catalina.sh", "run"]
+24. docker images {check in the list}
+
