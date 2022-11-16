@@ -1,5 +1,5 @@
 Configure docker 
-
+Docker is a container runtime. Greatest example for micro services. It has just what ever needs, just it.
 1. EC2 vm spin up 
 2. sudo su - 
 3. yum install docker -y 
@@ -22,17 +22,14 @@ Configure docker
 20.                         - Copy all files in webapps.dist > webapps
 21. docker stop 619110ddf2c5 {docker image ID} : to stop docker image
 22. In Root dir, vim Dockerfile:
-23. FROM centos
-    RUN cd /etc/yum.repos.d/
-    RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
-    RUN sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
-    RUN yum -y install java
-    RUN mkdir /opt/tomcat/
-    WORKDIR /opt/tomcat
-    ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.69/bin/apache-tomcat-9.0.69.tar.gz /opt/tomcat
-    RUN tar xvzf apache-tomcat-9.0.69.tar.gz
-    RUN mv apache-tomcat-9.0.69/* /opt/tomcat
-    EXPOSE 8080
-    CMD ["/opt/tomcat/bin/catalina.sh", "run"]
+23
 24. docker images {check in the list}
-
+25. docker build -t myimage .
+26. docker images - docker ps - docker stop {image id} - docker rm {image id}
+27. to get in the container: docker exec -it {docker image} /bin/bash
+28. ip addr {private ip}
+29. cat /etc/passw
+30. adduser...
+31. usermod -aG
+32. visudo , chown
+33. docker system -prune
